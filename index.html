@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 19th, Marion 🎀</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FFF6F8;
+    --blush: #FFE3EA;
+    --pink: #FFAFC5;
+    --hotpink: #FF7A9C;
+    --plum: #4A2438;
+    --plum-soft: #7A4A5E;
+    --gold: #F6C453;
+    --shadow: rgba(74, 36, 56, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--cream);
+    color: var(--plum);
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  p { line-height: 1.6; }
+
+  a { color: inherit; }
+
+  /* ---------- Floating hearts (single load animation) ---------- */
+  #hearts-layer{
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+  }
+  .heart{
+    position: absolute;
+    bottom: -10%;
+    font-size: 22px;
+    opacity: 0;
+    animation: floatUp 6s ease-in forwards;
+  }
+  @keyframes floatUp{
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.9; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    background:
+      radial-gradient(ellipse at top left, var(--blush) 0%, transparent 55%),
+      radial-gradient(ellipse at bottom right, var(--pink) 0%, transparent 60%),
+      var(--cream);
+  }
+
+  .eyebrow-ribbon{
+    display: inline-block;
+    background: var(--hotpink);
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+    box-shadow: 0 6px 16px var(--shadow);
+  }
+
+  .hero-title{
+    font-size: clamp(2.6rem, 8vw, 5.2rem);
+    line-height: 1.05;
+    color: var(--plum);
+  }
+  .hero-title em{
+    font-style: italic;
+    color: var(--hotpink);
+  }
+
+  .hero-number{
+    position: relative;
+    font-size: clamp(6rem, 22vw, 13rem);
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--pink);
+    line-height: 0.85;
+    margin: 10px 0;
+    -webkit-text-stroke: 2px var(--hotpink);
+  }
+
+  .hero-sub{
+    max-width: 480px;
+    font-size: 1.15rem;
+    color: var(--plum-soft);
+    margin-top: 6px;
+  }
+
+  /* Countdown */
+  .countdown{
+    display: flex;
+    gap: 16px;
+    margin-top: 42px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .countdown .box{
+    background: #fff;
+    border-radius: 18px;
+    padding: 16px 20px;
+    min-width: 84px;
+    box-shadow: 0 10px 24px var(--shadow);
+    border: 2px solid var(--blush);
+  }
+  .countdown .num{
+    font-family: 'Fraunces', serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--hotpink);
+  }
+  .countdown .label{
+    font-size: 0.78rem;
+    color: var(--plum-soft);
+    text-transform: lowercase;
+    margin-top: 2px;
+  }
+  .countdown.done .box{ display: none; }
+  .countdown-done-msg{ display:none; font-size: 1.3rem; margin-top: 30px; color: var(--hotpink); }
+  .countdown.done + .countdown-done-msg{ display: block; }
+
+  .scroll-hint{
+    position: absolute;
+    bottom: 28px;
+    font-size: 0.9rem;
+    color: var(--plum-soft);
+    opacity: 0.8;
+  }
+
+  /* ---------- Section shell ---------- */
+  section{
+    position: relative;
+    padding: 100px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-heading{
+    text-align: center;
+    margin-bottom: 64px;
+  }
+  .section-heading h2{
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+  }
+  .section-heading .sub{
+    color: var(--plum-soft);
+    margin-top: 10px;
+    font-size: 1.05rem;
+  }
+
+  .wave-divider{
+    width: 100%;
+    height: 60px;
+    display: block;
+  }
+
+  /* ---------- Timeline / friendship trail ---------- */
+  .trail{
+    position: relative;
+    padding-left: 0;
+  }
+  .trail::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: repeating-linear-gradient(to bottom, var(--pink) 0, var(--pink) 8px, transparent 8px, transparent 16px);
+    transform: translateX(-50%);
+  }
+  .trail-item{
+    position: relative;
+    width: 46%;
+    margin-bottom: 56px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 22px 24px;
+    box-shadow: 0 10px 26px var(--shadow);
+  }
+  .trail-item::after{
+    content: "";
+    position: absolute;
+    top: 24px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--hotpink);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 3px var(--pink);
+  }
+  .trail-item:nth-child(odd){ left: 0; }
+  .trail-item:nth-child(even){ left: 54%; }
+  .trail-item:nth-child(odd)::after{ right: -33px; }
+  .trail-item:nth-child(even)::after{ left: -33px; }
+  .trail-item .year{
+    font-family: 'Fraunces', serif;
+    color: var(--hotpink);
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+
+  @media (max-width: 720px){
+    .trail::before{ left: 18px; }
+    .trail-item{ width: calc(100% - 56px); left: 46px !important; }
+    .trail-item::after{ left: -34px !important; right: auto !important; }
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 34px;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  .polaroid{
+    background: #fff;
+    padding: 14px 14px 44px;
+    box-shadow: 0 14px 28px var(--shadow);
+    width: 220px;
+    transform: rotate(var(--tilt, -4deg));
+    transition: transform .35s ease;
+    position: relative;
+  }
+  .polaroid:nth-child(2n){ --tilt: 3deg; }
+  .polaroid:nth-child(3n){ --tilt: -6deg; }
+  .polaroid:nth-child(4n){ --tilt: 5deg; }
+  .polaroid:hover{ transform: rotate(0deg) scale(1.04); z-index: 2; }
+  .polaroid img{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: var(--blush);
+  }
+  .polaroid figcaption{
+    margin-top: 12px;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--plum-soft);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Messages wall ---------- */
+  .wall{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 26px;
+    justify-content: center;
+  }
+  .note{
+    background: var(--gold);
+    color: #4A2E00;
+    width: 240px;
+    min-height: 180px;
+    padding: 22px;
+    box-shadow: 0 10px 20px var(--shadow);
+    transform: rotate(-2deg);
+    font-family: 'Fraunces', serif;
+    font-size: 1.02rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .note:nth-child(2n){ background: var(--pink); color: var(--plum); transform: rotate(2deg); }
+  .note:nth-child(3n){ background: #fff; color: var(--plum); transform: rotate(-1deg); border: 2px dashed var(--pink); }
+  .note .from{
+    margin-top: 16px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    opacity: 0.75;
+  }
+  .note.add-yours{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background: transparent;
+    border: 2px dashed var(--pink);
+    color: var(--plum-soft);
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    text-align: center;
+    padding: 70px 20px 120px;
+    color: var(--plum-soft);
+  }
+  footer .sign{
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--hotpink);
+    margin-top: 10px;
+  }
+
+  /* ---------- Floating music button ---------- */
+  #music-toggle{
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 20;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--hotpink);
+    color: #fff;
+    border: none;
+    font-size: 1.4rem;
+    box-shadow: 0 10px 24px var(--shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #music-toggle:focus-visible, a:focus-visible, button:focus-visible{
+    outline: 3px solid var(--plum);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .heart{ animation: none; display: none; }
+    html{ scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div id="hearts-layer"></div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <span class="eyebrow-ribbon">a little corner of the internet, just for you</span>
+  <h1 class="hero-title">Happy 19th,<br><em>Marion</em> 🎀</h1>
+  <div class="hero-number">19</div>
+  <p class="hero-sub">From class 8 to now — still the same two goofballs, just a little older. This page is your birthday gift.</p>
+
+  <div class="countdown" id="countdown">
+    <div class="box"><div class="num" id="cd-days">00</div><div class="label">days</div></div>
+    <div class="box"><div class="num" id="cd-hours">00</div><div class="label">hours</div></div>
+    <div class="box"><div class="num" id="cd-mins">00</div><div class="label">minutes</div></div>
+    <div class="box"><div class="num" id="cd-secs">00</div><div class="label">seconds</div></div>
+  </div>
+  <p class="countdown-done-msg">🎉 It's here — happy birthday, Marion! 🎉</p>
+
+  <span class="scroll-hint">scroll down, there's more ↓</span>
+</section>
+
+<!-- ================= TIMELINE ================= -->
+<section id="timeline">
+  <div class="section-heading">
+    <h2>our little trail</h2>
+    <p class="sub">a few stops along the way — edit these to match your real memories!</p>
+  </div>
+
+  <div class="trail">
+    <div class="trail-item">
+      <div class="year">Class 8</div>
+      <p>Where it all started — two strangers sat next to each other and somehow never stopped talking since.</p>
+    </div>
+    <div class="trail-item">
+      <div class="year">A year or two later</div>
+      <p>Add a memory here — your first sleepover, an inside joke that started, anything that comes to mind.</p>
+    </div>
+    <div class="trail-item">
+      <div class="year">High school</div>
+      <p>Add another memory — a trip, a fight you made up from, a teacher you both couldn't stand.</p>
+    </div>
+    <div class="trail-item">
+      <div class="year">Today</div>
+      <p>Still best friends, still inseparable — and now watching you turn 19. So proud of who you've become.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section id="gallery">
+  <div class="section-heading">
+    <h2>us, through the years</h2>
+    <p class="sub">upload your photos to Cloudinary, then swap the image links below</p>
+  </div>
+
+  <div class="gallery">
+    <!--
+      Create a folder called "images" right next to this index.html file,
+      drop your photos in there, and point each src below at the filename.
+      Example: images/photo1.jpg
+    -->
+    <figure class="polaroid">
+      <img src="images/photo1.jpg" alt="Marion and friend, photo 1">
+      <figcaption>add a caption</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="images/photo2.jpg" alt="Marion and friend, photo 2">
+      <figcaption>add a caption</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="images/photo3.jpg" alt="Marion and friend, photo 3">
+      <figcaption>add a caption</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="images/photo4.jpg" alt="Marion and friend, photo 4">
+      <figcaption>add a caption</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="images/photo5.jpg" alt="Marion and friend, photo 5">
+      <figcaption>add a caption</figcaption>
+    </figure>
+    <figure class="polaroid">
+      <img src="images/photo6.jpg" alt="Marion and friend, photo 6">
+      <figcaption>add a caption</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= MESSAGES WALL ================= -->
+<section id="messages">
+  <div class="section-heading">
+    <h2>a wall of love</h2>
+    <p class="sub">birthday notes for Marion — add more from your other friends</p>
+  </div>
+
+  <div class="wall">
+    <div class="note">
+      <p>Marion, 19 years of you existing and the world is genuinely better for it. Since class 8 you've been my constant — the person I laugh hardest with and trust the most. Here's to everything this year has for you. I love you endlessly.</p>
+      <div class="from">— your best friend, always</div>
+    </div>
+
+    <div class="note add-yours">+ leave a message for Marion here</div>
+    <div class="note add-yours">+ another friend can add theirs here</div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <p>made with a lot of love, a bit of glitter, and way too many inside jokes.</p>
+  <p class="sign">happy birthday, Marion 🎀</p>
+</footer>
+
+<!-- ================= MUSIC ================= -->
+<!--
+  To add a song: go to Spotify, find the track, click Share → Embed track,
+  copy the src URL from the iframe it gives you, and paste it below
+  in place of the placeholder src.
+-->
+<button id="music-toggle" aria-label="Play birthday music" onclick="toggleMusic()">♪</button>
+<div id="music-embed" style="position:fixed; bottom:90px; right:22px; z-index:20; display:none;">
+  <iframe id="spotify-frame"
+    style="border-radius:16px; box-shadow:0 10px 24px rgba(74,36,56,0.2);"
+    src="https://open.spotify.com/embed/track/REPLACE_WITH_TRACK_ID?utm_source=generator&theme=0"
+    width="300" height="152" frameborder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy"></iframe>
+</div>
+
+<script>
+  // ---- Countdown to birthday ----
+  const target = new Date("2026-09-20T00:00:00").getTime();
+
+  function updateCountdown(){
+    const now = Date.now();
+    const diff = target - now;
+    const el = document.getElementById('countdown');
+
+    if (diff <= 0){
+      el.classList.add('done');
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+
+    document.getElementById('cd-days').textContent = String(days).padStart(2,'0');
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(mins).padStart(2,'0');
+    document.getElementById('cd-secs').textContent = String(secs).padStart(2,'0');
+  }
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+
+  // ---- Floating hearts, single orchestrated moment on load ----
+  function spawnHearts(){
+    const layer = document.getElementById('hearts-layer');
+    const symbols = ['💗','💕','✨','🎀'];
+    for (let i = 0; i < 22; i++){
+      const h = document.createElement('span');
+      h.className = 'heart';
+      h.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.animationDelay = (Math.random() * 2.5) + 's';
+      h.style.fontSize = (16 + Math.random() * 18) + 'px';
+      layer.appendChild(h);
+      setTimeout(() => h.remove(), 8000);
+    }
+  }
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    window.addEventListener('load', spawnHearts);
+  }
+
+  // ---- Music toggle ----
+  function toggleMusic(){
+    const embed = document.getElementById('music-embed');
+    embed.style.display = embed.style.display === 'none' ? 'block' : 'none';
+  }
+</script>
+
+</body>
+</html>
