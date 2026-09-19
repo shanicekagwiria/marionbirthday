@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Happy 19th, Marion 🎀">
+<meta property="og:description" content="a little corner of the internet, just for you">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://example.com/birthday-image.jpg">
 <title>Happy 19th, Marion 🎀</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -482,14 +486,27 @@
   in place of the placeholder src.
 -->
 <button id="music-toggle" aria-label="Play birthday music" onclick="toggleMusic()">♪</button>
-<div id="music-embed" style="position:fixed; bottom:90px; right:22px; z-index:20; display:none;">
-  <iframe id="spotify-frame"
-    style="border-radius:16px; box-shadow:0 10px 24px rgba(74,36,56,0.2);"
-    src="https://open.spotify.com/embed/track/https://open.spotify.com/track/2GBgiuXwY1KzJMA0gSAr9J?si=J578qfFjTdmjvJ8mWPvIwg&utm_source=copy-link?utm_source=generator&theme=0"
-    width="300" height="152" frameborder="0"
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy"></iframe>
-</div>
+<div id="music-embed" style="position:fixed; bottom:90px; right:22px; z-index:20; display:none;"></div>
+
+<script>
+  const YT_ID = "y13-xeaShIo";
+  let musicOn = false;
+
+  function toggleMusic(){
+    const box = document.getElementById('music-embed');
+    const btn = document.getElementById('music-toggle');
+    musicOn = !musicOn;
+    if (musicOn){
+      box.innerHTML = '<iframe width="300" height="170" style="border-radius:16px;box-shadow:0 10px 24px rgba(74,36,56,0.2);" src="https://www.youtube.com/embed/' + YT_ID + '?autoplay=1&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+      box.style.display = 'block';
+      btn.textContent = '❚❚';
+    } else {
+      box.innerHTML = '';
+      box.style.display = 'none';
+      btn.textContent = '♪';
+    }
+  }
+</script>
 
 <script>
   // ---- Countdown to birthday ----
@@ -538,11 +555,6 @@
     window.addEventListener('load', spawnHearts);
   }
 
-  // ---- Music toggle ----
-  function toggleMusic(){
-    const embed = document.getElementById('music-embed');
-    embed.style.display = embed.style.display === 'none' ? 'block' : 'none';
-  }
 </script>
 
 </body>
